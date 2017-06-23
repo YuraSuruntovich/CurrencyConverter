@@ -1,0 +1,1 @@
+d:\Study\UWP\Projects\CurrencyConverter_Copy\CurrencyConverter\CurrencyConverter.csproj;x64

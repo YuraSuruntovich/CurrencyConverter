@@ -1,0 +1,91 @@
+﻿<Page
+    x:Class="CurrencyConverter.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CurrencyConverter"
+    xmlns:data="using:CurrencyConverter.Models"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded"
+    Background="#918773"
+>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Name="BtnChange" Grid.Column="3"  Grid.Row="9" Icon="Edit" Label="Изменить избранное" HorizontalAlignment="Right" Click="BtnChange_Click"></AppBarButton>
+            <AppBarButton x:Name="BtnRefresh" Grid.Column="3"  Grid.Row="9" Icon="Refresh" Label="Обновить" HorizontalAlignment="Right" Click="AppBarButton_Click"></AppBarButton>
+        </CommandBar>
+    </Page.BottomAppBar>     
+    <!--<Grid Margin="10" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"> -->
+    <Grid Background="#efebec" >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.ColumnSpan="3" Grid.Row="0" VerticalAlignment="Top" Style="{StaticResource HeaderTextBlockStyle}" Foreground="#282940" FontStyle="Oblique" FontSize="40" Margin="10 -9 0 0">Конвертер валют</TextBlock>
+
+        <Image Grid.Row="1" Grid.Column="0" Height="30" Width="30" VerticalAlignment="Center" Margin="0 5 0 0"  Source="Img\BYR.jpg"/>
+        <Image Grid.Row="2" Grid.Column="0" Height="30" Width="30" VerticalAlignment="Center"  Source="Img\BYR.jpg"/>
+        <Image Grid.Row="3" Grid.Column="0" Height="30" Width="30" VerticalAlignment="Center"  Source="Img\USD.jpg"/>
+        <Image Grid.Row="4" Grid.Column="0" Height="30" Width="30" VerticalAlignment="Center"  Source="Img\EUR.jpg"/>
+        <Image Grid.Row="5" Grid.Column="0" Height="30" Width="30" VerticalAlignment="Center"  Source="Img\UAH.jpg"/>
+        <Image Grid.Row="6" Grid.Column="0" Height="30" Width="30" VerticalAlignment="Center"  Source="Img\RUB.jpg"/>
+        <Image Grid.Row="7" Grid.Column="0" Height="30" Width="30" VerticalAlignment="Center"  Source="Img\PLN.jpg"/>
+        <Image Grid.Row="8" Grid.Column="0" Height="30" Width="30" VerticalAlignment="Center" x:Name="favorite_img"/>
+         
+        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="byn" HorizontalAlignment="Left" TextWrapping="Wrap" FontFamily="Arial" Text="BYN" Foreground="#282940" VerticalAlignment="Center" Margin="0 5 0 0" />
+        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="byr" HorizontalAlignment="Left" TextWrapping="Wrap" FontFamily="Arial" Text="BYR" Foreground="#282940" VerticalAlignment="Center" />
+        <TextBlock Grid.Row="3" Grid.Column="1" x:Name="usd" HorizontalAlignment="Left" TextWrapping="Wrap" FontFamily="Arial" Text="USD" Foreground="#282940" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="4" Grid.Column="1" x:Name="eur" HorizontalAlignment="Left" TextWrapping="Wrap" FontFamily="Arial" Text="EUR" Foreground="#282940" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="5" Grid.Column="1" x:Name="uah" HorizontalAlignment="Left" TextWrapping="Wrap" FontFamily="Arial" Text="UAH" Foreground="#282940" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="6" Grid.Column="1" x:Name="rub" HorizontalAlignment="Left" TextWrapping="Wrap" FontFamily="Arial" Text="RUB" Foreground="#282940" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="7" Grid.Column="1" x:Name="pln" HorizontalAlignment="Left" TextWrapping="Wrap" FontFamily="Arial" Text="PLN" Foreground="#282940" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="8" Grid.Column="1" x:Name="favorite_text" HorizontalAlignment="Left" TextWrapping="Wrap" FontFamily="Arial" Text="Загрузка" Foreground="#282940" VerticalAlignment="Center" Tapped="favorite_text_Tapped"/>
+        
+        <TextBox x:Name="inputBYN" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" Margin="10 5 10 0" PlaceholderText="BYN" VerticalAlignment="Center" RenderTransformOrigin="-0.249,0.396" BorderThickness="1" InputScope="Digits" KeyUp="inputBYN_KeyUp"/>
+        <TextBox x:Name="inputBYR" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" Margin="10 0 10 0" PlaceholderText="BYR" VerticalAlignment="Center" RenderTransformOrigin="-0.249,0.396" BorderThickness="1" InputScope="Digits" KeyUp="inputBYR_KeyUp"/>
+        <TextBox x:Name="inputUSD" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" Margin="10 0 10 0" PlaceholderText="USD" VerticalAlignment="Center" RenderTransformOrigin="-0.249,0.396" BorderThickness="1" InputScope="Digits" KeyUp="inputUSD_KeyUp"/>
+        <TextBox x:Name="inputEUR" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Stretch" Margin="10 0 10 0" PlaceholderText="EUR" VerticalAlignment="Center" RenderTransformOrigin="-0.249,0.396" BorderThickness="1" InputScope="Digits" KeyUp="inputEUR_KeyUp"/>
+        <TextBox x:Name="inputUAH" Grid.Row="5" Grid.Column="2" HorizontalAlignment="Stretch" Margin="10 0 10 0" PlaceholderText="UAH" VerticalAlignment="Center" RenderTransformOrigin="-0.249,0.396" BorderThickness="1" InputScope="Digits" KeyUp="inputUAH_KeyUp"/>
+        <TextBox x:Name="inputRUB" Grid.Row="6" Grid.Column="2" HorizontalAlignment="Stretch" Margin="10 0 10 0" PlaceholderText="RUB" VerticalAlignment="Center" RenderTransformOrigin="-0.249,0.396" BorderThickness="1" InputScope="Digits" KeyUp="inputRUB_KeyUp"/>
+        <TextBox x:Name="inputPLN" Grid.Row="7" Grid.Column="2" HorizontalAlignment="Stretch" Margin="10 0 10 0" PlaceholderText="PLN" VerticalAlignment="Center" RenderTransformOrigin="-0.249,0.396" BorderThickness="1" InputScope="Digits" KeyUp="inputPLN_KeyUp"/>
+        <TextBox x:Name="inputFavorite" Grid.Row="8" Grid.Column="2" HorizontalAlignment="Stretch" Margin="10 0 10 0" PlaceholderText="Загрузка..." VerticalAlignment="Center" RenderTransformOrigin="-0.249,0.396" BorderThickness="1" InputScope="Digits" KeyUp="inputFavorite_KeyUp" />
+
+
+        <TextBlock x:Name="DateRefresh" Grid.ColumnSpan="3" Grid.Row="9" VerticalAlignment="Center" FontSize="12"  Foreground="#282940" Margin="10 0 10 0"></TextBlock>
+
+        <FlyoutBase.AttachedFlyout>
+            <Flyout x:Name="dialogBox">
+                <StackPanel>
+                    <TextBlock Text="Выберите валюту" FontSize="20" />
+
+                    <ListView x:Name="elemList" ItemsSource="{Binding AllCurency}" IsItemClickEnabled="True" ItemClick="elemList_ItemClick" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Cur_Name}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <Button x:Name="CancelDialogButton" Content="Отмена" HorizontalAlignment="Center" Background="#c9302c" Foreground="White" Click="CancelDialogButton_Click"/>
+                </StackPanel>
+            </Flyout>
+        </FlyoutBase.AttachedFlyout>
+
+    </Grid>
+</Page>
